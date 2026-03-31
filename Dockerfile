@@ -19,10 +19,8 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-# KoSIT Validator JAR
-ADD https://github.com/itplr-kosit/validator/releases/download/v1.6.0/validator-1.6.0-standalone.jar validator.jar
-
-# Konfiguration aus Builder kopieren
+# Validator JAR und Konfiguration aus Builder kopieren
+COPY --from=builder /build/lib/validator-1.6.0-standalone.jar validator.jar
 COPY --from=builder /build/config /app/config
 
 EXPOSE 8080
