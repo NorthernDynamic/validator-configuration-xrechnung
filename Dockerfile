@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y ant unzip && rm -rf /var/lib/apt/lists/
 # Repo kopieren
 COPY . .
 
-# Build ausfuehren
+# Build ausfuehren (Xss8m fuer SchXslt Rekursionstiefe)
+ENV ANT_OPTS="-Xss8m -Xmx1g"
 RUN ant dist
 
 # Konfiguration entpacken
